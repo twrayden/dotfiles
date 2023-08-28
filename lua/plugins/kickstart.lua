@@ -83,10 +83,9 @@ return {
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
-        -- tsserver = {},
-        -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+        rust_analyzer = {},
+        tsserver = {},
+        html = { filetypes = { 'html', 'hbs'} },
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },
@@ -111,12 +110,12 @@ return {
 
       mason_lspconfig.setup_handlers {
         function(server_name)
-          require('lspconfig')[server_name].setup {
+          require('lspconfig')[server_name].setup({
             capabilities = capabilities,
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
-          }
+          })
         end
       }
     end,
@@ -141,10 +140,12 @@ return {
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      require('luasnip.loaders.from_vscode').lazy_load()
-      luasnip.config.setup {}
 
-      cmp.setup {
+      require('luasnip.loaders.from_vscode').lazy_load()
+      
+      luasnip.config.setup({})
+
+      cmp.setup({
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -183,7 +184,7 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
         },
-      }
+      })
     end
   },
 
@@ -259,9 +260,9 @@ return {
     config = function()
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').setup {
+      require('telescope').setup({
         defaults = {
-          file_ignore_patterns = { "node_modules" },
+          file_ignore_patterns = { "node_modules", "dist" },
           mappings = {
             i = {
               ['<C-u>'] = false,
@@ -269,7 +270,7 @@ return {
             },
           },
         },
-      }
+      })
 
       -- Enable telescope fzf native, if installed
       pcall(require('telescope').load_extension, 'fzf')
