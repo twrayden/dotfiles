@@ -5,11 +5,35 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
+  -- UNIX plugins
+  'tpope/vim-eunuch',
+
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- Move selected code blocks
+  'fedepujol/move.nvim',
+
+  -- Find usages of symbols
+  'pechorin/any-jump.vim',
+
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
+
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',  opts = {} },
+
+  {
+    'mrjones2014/legendary.nvim',
+    version = 'v2.1.0',
+    -- since legendary.nvim handles all your keymaps/commands,
+    -- its recommended to load legendary.nvim before other plugins
+    priority = 10000,
+    lazy = false,
+    -- sqlite is only needed if you want to use frecency sorting
+    -- dependencies = { 'kkharji/sqlite.lua' }
+  },
+
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -56,11 +80,8 @@ return {
     },
   },
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
-
-  -- Fuzzy Finder (files, lsp, etc)
   {
+    -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
@@ -196,7 +217,9 @@ return {
     end,
   },
 
+
   {
+    -- Traditional directory style view mode from IDEs
     'nvim-tree/nvim-tree.lua',
     lazy = false,
     dependencies = {
@@ -211,13 +234,12 @@ return {
   },
 
   {
+    -- Fuzzy finder
     'junegunn/fzf.vim',
     dependencies = {
       'junegunn/fzf',
     }
   },
-
-  { 'pechorin/any-jump.vim' },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
