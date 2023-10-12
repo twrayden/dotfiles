@@ -89,12 +89,11 @@ M.config = function()
         },
         autocmds = {
             {
-                name = 'YankHighlight',
-                clear = true,
-                {
-                    'TextYankPost',
-                    vim.highlight.on_yank,
-                }
+                'TextYankPost',
+                function()
+                    vim.highlight.on_yank()
+                end,
+                description = "Highlight on yank",
             }
         },
         extensions = {
