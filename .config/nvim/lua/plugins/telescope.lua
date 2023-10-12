@@ -25,7 +25,7 @@ M.config = function()
     -- See `:help telescope` and `:help telescope.setup()`
     require('telescope').setup({
         defaults = {
-            path_display = { shorten = 1 },
+            path_display = { shorten = { len = 1, exclude = { -1, -2 } } },
             file_ignore_patterns = { "node_modules", "dist" },
             mappings = {
                 i = {
