@@ -18,10 +18,14 @@ return {
   'pechorin/any-jump.vim',
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',     opts = {} },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim',      opts = {} },
+
+  { 'xiyaowong/transparent.nvim' },
+
+  { 'sainnhe/everforest', lazy = false },
 
   {
     'mrjones2014/legendary.nvim',
@@ -62,7 +66,7 @@ return {
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'everforest',
         component_separators = '|',
         section_separators = '',
       },
