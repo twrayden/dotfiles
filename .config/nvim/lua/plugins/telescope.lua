@@ -17,7 +17,6 @@ local M = {
             end,
         },
     },
-
 }
 
 M.config = function()

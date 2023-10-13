@@ -14,6 +14,31 @@ M.config = function()
     require('legendary').setup({
         keymaps = {
             {
+                '<leader>y',
+                '"+y',
+                description = 'Copy to clipboard'
+            },
+            {
+                '<leader>p',
+                '"+p',
+                description = 'Paste from clipboard'
+            },
+            {
+                '<leader>Y',
+                '"+yg_',
+                description = 'Copy to clipboard'
+            },
+            {
+                '<leader>yy',
+                '"+yy',
+                description = 'Copy to clipboard'
+            },
+            {
+                '<leader>P',
+                '"+P',
+                description = 'Paste from clipboard'
+            },
+            {
                 '<leader>?',
                 require('telescope.builtin').oldfiles,
                 description = '[?] Find recently opened files'
