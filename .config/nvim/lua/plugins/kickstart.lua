@@ -12,49 +12,33 @@ return {
   'tpope/vim-sleuth',
 
   -- Move selected code blocks
-  'fedepujol/move.nvim',
+  {
+    'fedepujol/move.nvim',
+    config = function()
+      local keyset = vim.keymap.set
+
+      local opts = { noremap = true, silent = true }
+      -- Normal-mode commands
+      keyset('n', '<A-j>', ':MoveLine(1)<CR>', opts)
+      keyset('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
+      keyset('n', '<A-h>', ':MoveHChar(-1)<CR>', opts)
+      keyset('n', '<A-l>', ':MoveHChar(1)<CR>', opts)
+      keyset('n', '<leader>wf', ':MoveWord(1)<CR>', opts)
+      keyset('n', '<leader>wb', ':MoveWord(-1)<CR>', opts)
+
+      -- Visual-mode commands
+      keyset('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
+      keyset('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
+      keyset('v', '<A-h>', ':MoveHBlock(-1)<CR>', opts)
+      keyset('v', '<A-l>', ':MoveHBlock(1)<CR>', opts)
+    end
+  },
 
   -- Find usages of symbols
   'pechorin/any-jump.vim',
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',     opts = {} },
-
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',      opts = {} },
-
-  { 'xiyaowong/transparent.nvim' },
-
-  { 'sainnhe/everforest',        lazy = false },
-
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      }
-    },
-  },
-
-  {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'everforest',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
-  },
+  'numToStr/Comment.nvim',
 
   {
     -- Traditional directory style view mode from IDEs
@@ -66,22 +50,9 @@ return {
     config = function()
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
+
       require('nvim-tree').setup()
     end,
-  },
-
-  {
-    'anuvyklack/windows.nvim',
-    dependencies = {
-      'anuvyklack/middleclass',
-      'anuvyklack/animation.nvim'
-    },
-    config = function()
-      vim.o.winwidth = 10
-      vim.o.winminwidth = 10
-      vim.o.equalalways = false
-      require('windows').setup()
-    end
   },
 
   {
