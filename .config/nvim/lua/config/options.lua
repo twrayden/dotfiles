@@ -41,3 +41,6 @@ vim.wo.signcolumn = 'yes'
 vim.o.winwidth = 10
 vim.o.winminwidth = 10
 vim.o.equalalways = false
+
+-- Sync clipboard with OS (better tmux support)
+vim.opt.clipboard = 'unnamedplus'
