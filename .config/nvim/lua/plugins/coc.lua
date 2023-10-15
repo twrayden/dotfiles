@@ -68,44 +68,45 @@ M.config = function()
     -- no select by setting `"suggest.noselect": true` in your configuration file
     -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
     -- other plugins before putting this into your config
-    local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
-    keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-    keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+    local exprOpts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+    keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()',
+        exprOpts)
+    keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], exprOpts)
 
     -- Make <CR> to accept selected completion item or notify coc.nvim to format
     -- <C-g>u breaks current undo, please make your own choice
-    keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+    keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], exprOpts)
 
     -- Apply codeAction to the selected region
     -- Example: `<leader>aap` for current paragraph
-    local opts = { silent = true, nowait = true }
-    keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
-    keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+    local actionOpts = { silent = true, nowait = true }
+    keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", actionOpts)
+    keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", actionOpts)
 
     -- Remap keys for apply code actions at the cursor position.
-    keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
+    keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", actionOpts)
     -- Remap keys for apply code actions affect whole buffer.
-    keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts)
+    keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", actionOpts)
     -- Remap keys for applying codeActions to the current buffer
-    keyset("n", "<leader>ac", "<Plug>(coc-codeaction)", opts)
+    keyset("n", "<leader>ac", "<Plug>(coc-codeaction)", actionOpts)
     -- Apply the most preferred quickfix action on the current line.
-    keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)
+    keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", actionOpts)
     -- Run the Code Lens actions on the current line
-    keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)
+    keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", actionOpts)
 
     -- Remap keys for apply refactor code actions.
-    local opts = { silent = true }
-    keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", opts)
-    keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", opts)
-    keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", opts)
+    local silentOpts = { silent = true }
+    keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", silentOpts)
+    keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", silentOpts)
+    keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", silentOpts)
 
     -- GoTo code navigation
-    keyset("n", "gd", "<Plug>(coc-definition)", opts)
-    keyset("n", "gy", "<Plug>(coc-type-definition)", opts)
-    keyset("n", "gi", "<Plug>(coc-implementation)", opts)
-    keyset("n", "gr", "<Plug>(coc-references)", opts)
+    keyset("n", "gd", "<Plug>(coc-definition)", silentOpts)
+    keyset("n", "gy", "<Plug>(coc-type-definition)", silentOpts)
+    keyset("n", "gi", "<Plug>(coc-implementation)", silentOpts)
+    keyset("n", "gr", "<Plug>(coc-references)", silentOpts)
     -- Symbol renaming
-    keyset("n", "<leader>rn", "<Plug>(coc-rename)", opts)
+    keyset("n", "<leader>rn", "<Plug>(coc-rename)", silentOpts)
 end
 
 return M
