@@ -14,7 +14,21 @@ M.config = function()
 
     keyset({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-    require('which-key').setup()
+    require('which-key').setup({
+        plugins = {
+            spelling = { enabled = true, suggesions = 10 },
+            presets = {
+                operators = true,
+                motions = true,
+                text_objects = true,
+                windows = true,
+                nav = true,
+                z = true,
+                g = true
+            }
+        },
+        operators = { gc = 'Comments' }
+    })
 end
 
 return M

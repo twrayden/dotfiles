@@ -23,7 +23,13 @@ return {
     },
 
     -- "gc" to comment visual regions/lines
-    'numToStr/Comment.nvim',
+    {
+        'numToStr/Comment.nvim',
+        lazy = false,
+        config = function()
+            require('Comment').setup()
+        end
+    },
 
     -- mappings to easily delete, change and add such surroundings in pairs
     'tpope/vim-surround',
