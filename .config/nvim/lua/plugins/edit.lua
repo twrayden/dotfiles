@@ -25,6 +25,13 @@ return {
     -- "gc" to comment visual regions/lines
     'numToStr/Comment.nvim',
 
+    -- mappings to easily delete, change and add such surroundings in pairs
+    'tpope/vim-surround',
+
+    -- Detect tabstop and shiftwidth automatically
+    'tpope/vim-sleuth',
+
+    -- easily jump to places in code
     {
         'ggandor/leap.nvim',
         dependencies = { 'tpope/vim-repeat' },

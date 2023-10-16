@@ -8,9 +8,6 @@ return {
   -- UNIX plugin
   'tpope/vim-eunuch',
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
   -- Traditional directory style view mode from IDEs
   {
     'nvim-tree/nvim-tree.lua',
