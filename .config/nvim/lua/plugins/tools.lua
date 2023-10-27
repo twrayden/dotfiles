@@ -22,4 +22,6 @@ return {
       require('nvim-tree').setup()
     end,
   },
+
+  "sindrets/diffview.nvim"
 }

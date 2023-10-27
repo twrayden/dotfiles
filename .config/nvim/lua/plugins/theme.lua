@@ -1,4 +1,6 @@
 return {
+    'xiyaowong/transparent.nvim',
+
     {
         'sainnhe/everforest',
         lazy = false,
@@ -15,8 +17,6 @@ return {
             })
         end
     },
-
-    'xiyaowong/transparent.nvim',
 
     {
         'anuvyklack/windows.nvim',
@@ -54,4 +54,13 @@ return {
             }
         },
     },
+
+    {
+        'goolord/alpha-nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require 'alpha'.setup(require 'alpha.themes.startify'.config)
+        end
+    }
+
 }
