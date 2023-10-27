@@ -50,11 +50,9 @@ M.config = function()
     -- Add `:Format` command to format current buffer
     vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
 
-    -- " Add `:Fold` command to fold current buffer
-    vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", { nargs = '?' })
-
     -- Add `:OR` command for organize imports of the current buffer
-    vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+    vim.api.nvim_create_user_command("FormatImports", "call CocActionAsync('runCommand', 'editor.action.organizeImport')",
+        {})
 
     -- Add (Neo)Vim's native statusline support
     -- NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -63,12 +61,15 @@ M.config = function()
 
     local keyset = vim.keymap.set
 
+    local exprOpts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+    local actionOpts = { silent = true, nowait = true }
+    local silentOpts = { silent = true }
+
     -- Use Tab for trigger completion with characters ahead and navigate
     -- NOTE: There's always a completion item selected by default, you may want to enable
     -- no select by setting `"suggest.noselect": true` in your configuration file
     -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
     -- other plugins before putting this into your config
-    local exprOpts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
     keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()',
         exprOpts)
     keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], exprOpts)
@@ -79,7 +80,6 @@ M.config = function()
 
     -- Apply codeAction to the selected region
     -- Example: `<leader>aap` for current paragraph
-    local actionOpts = { silent = true, nowait = true }
     keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", actionOpts)
     keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", actionOpts)
 
@@ -95,7 +95,6 @@ M.config = function()
     keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", actionOpts)
 
     -- Remap keys for apply refactor code actions.
-    local silentOpts = { silent = true }
     keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", silentOpts)
     keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", silentOpts)
     keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", silentOpts)
@@ -105,6 +104,7 @@ M.config = function()
     keyset("n", "gy", "<Plug>(coc-type-definition)", silentOpts)
     keyset("n", "gi", "<Plug>(coc-implementation)", silentOpts)
     keyset("n", "gr", "<Plug>(coc-references)", silentOpts)
+
     -- Symbol renaming
     keyset("n", "<leader>rn", "<Plug>(coc-rename)", silentOpts)
 end
