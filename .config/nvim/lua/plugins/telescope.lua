@@ -13,7 +13,7 @@ local M = {
 			--       refer to the README for telescope-fzf-native for more instructions.
 			build = 'make',
 			cond = function()
-				return vim.fn.executable 'make' == 1
+				return vim.fn.executable('make') == 1
 			end,
 		},
 	},
@@ -23,7 +23,7 @@ local M = {
 M.config = function()
 	local keyset = vim.keymap.set
 
-	local fuzzy_buffers = function()
+	local current_buffer_fuzzy = function()
 		-- You can pass additional configuration to telescope to change theme, layout, etc.
 		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
 			winblend = 10,
@@ -33,7 +33,7 @@ M.config = function()
 
 	keyset('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 	keyset('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-	keyset('n', '<leader>/', fuzzy_buffers, { desc = '[/] Fuzzily search in current buffer' })
+	keyset('n', '<leader>/', current_buffer_fuzzy, { desc = '[/] Fuzzily search in current buffer' })
 	keyset('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 	keyset('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 	keyset('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })

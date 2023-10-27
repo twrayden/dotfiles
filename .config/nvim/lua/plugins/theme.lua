@@ -37,6 +37,23 @@ return {
                 component_separators = '|',
                 section_separators = '',
             },
+            sections = {
+                lualine_a = {
+                    { 'mode', fmt = function(str) return str:sub(1, 1) end } },
+                lualine_b = { 'branch', 'diff' },
+                lualine_c = { 'filename', 'location' },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = { 'buffers' }
+            },
+            inactive_sections = {
+                lualine_a = { 'filename' },
+                lualine_b = {},
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {}
+            }
         },
     },
 
@@ -51,7 +68,9 @@ return {
                 delete = { text = '_' },
                 topdelete = { text = '‾' },
                 changedelete = { text = '~' },
-            }
+            },
+            signcolumn = true,
+            current_line_blame = true
         },
     },
 
@@ -59,7 +78,7 @@ return {
         'goolord/alpha-nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require 'alpha'.setup(require 'alpha.themes.startify'.config)
+            require('alpha').setup(require('alpha.themes.startify').config)
         end
     }
 
