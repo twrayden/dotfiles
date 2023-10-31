@@ -44,7 +44,7 @@ return {
                 lualine_c = { 'filename', 'location' },
                 lualine_x = {},
                 lualine_y = {},
-                lualine_z = { 'buffers' }
+                lualine_z = {}
             },
             inactive_sections = {
                 lualine_a = { 'filename' },

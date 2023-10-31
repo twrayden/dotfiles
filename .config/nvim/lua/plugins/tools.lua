@@ -8,6 +8,8 @@ return {
   -- UNIX plugin
   'tpope/vim-eunuch',
 
+  "sindrets/diffview.nvim",
+
   -- Traditional directory style view mode from IDEs
   {
     'nvim-tree/nvim-tree.lua',
@@ -23,5 +25,16 @@ return {
     end,
   },
 
-  "sindrets/diffview.nvim"
+  {
+    'akinsho/toggleterm.nvim',
+    lazy = false,
+    config = function()
+      local keyset = vim.keymap.set
+
+      keyset("n", "<leader>t", ":ToggleTerm size=160 direction=vertical<CR>", { silent = true })
+      keyset("t", "<Esc>", [[<C-\><C-n>]])
+
+      require('toggleterm').setup()
+    end
+  }
 }
