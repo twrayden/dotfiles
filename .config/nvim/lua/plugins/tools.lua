@@ -21,6 +21,10 @@ return {
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
 
+      local keyset = vim.keymap.set
+
+      keyset("n", "<leader>e", ":NvimTreeOpen<CR>", { silent = true })
+
       require('nvim-tree').setup()
     end,
   },
@@ -32,7 +36,7 @@ return {
       local keyset = vim.keymap.set
 
       keyset("n", "<leader>t", ":ToggleTerm size=160 direction=vertical<CR>", { silent = true })
-      keyset("t", "<Esc>", [[<C-\><C-n>]])
+      keyset("t", "<C-w>", [[<C-\><C-n>]])
 
       require('toggleterm').setup()
     end
