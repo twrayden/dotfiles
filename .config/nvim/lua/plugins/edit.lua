@@ -5,20 +5,27 @@ return {
         config = function()
             local keyset = vim.keymap.set
 
-            local opts = { noremap = true, silent = true }
+            local silentOpts = { noremap = true, silent = true }
             -- Normal-mode commands
-            keyset('n', '<A-j>', ':MoveLine(1)<CR>', opts)
-            keyset('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
-            keyset('n', '<A-h>', ':MoveHChar(-1)<CR>', opts)
-            keyset('n', '<A-l>', ':MoveHChar(1)<CR>', opts)
-            keyset('n', '<leader>wf', ':MoveWord(1)<CR>', opts)
-            keyset('n', '<leader>wb', ':MoveWord(-1)<CR>', opts)
+            keyset('n', '<A-j>', ':MoveLine(1)<CR>', silentOpts)
+            keyset('n', '<A-k>', ':MoveLine(-1)<CR>', silentOpts)
+            keyset('n', '<A-h>', ':MoveHChar(-1)<CR>', silentOpts)
+            keyset('n', '<A-l>', ':MoveHChar(1)<CR>', silentOpts)
+            keyset('n', '<leader>wf', ':MoveWord(1)<CR>', silentOpts)
+            keyset('n', '<leader>wb', ':MoveWord(-1)<CR>', silentOpts)
 
             -- Visual-mode commands
-            keyset('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
-            keyset('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
-            keyset('v', '<A-h>', ':MoveHBlock(-1)<CR>', opts)
-            keyset('v', '<A-l>', ':MoveHBlock(1)<CR>', opts)
+            keyset('v', '<A-j>', ':MoveBlock(1)<CR>', silentOpts)
+            keyset('v', '<A-k>', ':MoveBlock(-1)<CR>', silentOpts)
+            keyset('v', '<A-h>', ':MoveHBlock(-1)<CR>', silentOpts)
+            keyset('v', '<A-l>', ':MoveHBlock(1)<CR>', silentOpts)
+
+
+            -- Add keymaps for saving with control + s
+            local opts = { noremap = true }
+            keyset('n', '<c-s>', ':w<CR>', opts)
+            keyset('i', '<c-s>', '<Esc>:w<CR>l', opts)
+            keyset('v', '<c-s>', '<Esc>:w<CR>', opts)
         end
     },
 

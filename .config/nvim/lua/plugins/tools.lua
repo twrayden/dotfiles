@@ -25,7 +25,9 @@ return {
 
       keyset("n", "<leader>e", ":NvimTreeOpen<CR>", { silent = true })
 
-      require('nvim-tree').setup()
+      require('nvim-tree').setup({
+        view = { adaptive_size = true }
+      })
     end,
   },
 
