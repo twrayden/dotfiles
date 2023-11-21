@@ -1,13 +1,13 @@
 return {
     'xiyaowong/transparent.nvim',
 
+    'sainnhe/everforest',
+
     {
-        'sainnhe/everforest',
-        lazy = false,
-        init = function()
-            vim.cmd.colorscheme('everforest')
-        end,
+        'dracula/vim',
         config = function()
+            vim.cmd.colorscheme('dracula')
+
             vim.api.nvim_create_autocmd('TextYankPost', {
                 callback = function()
                     vim.highlight.on_yank()
@@ -33,7 +33,7 @@ return {
         opts = {
             options = {
                 icons_enabled = false,
-                theme = 'everforest',
+                theme = 'dracula',
                 component_separators = '|',
                 section_separators = '',
             },
@@ -81,5 +81,4 @@ return {
             require('alpha').setup(require('alpha.themes.startify').config)
         end
     }
-
 }
