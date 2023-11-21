@@ -37,10 +37,5 @@ vim.o.updatetime = 250
 vim.opt.signcolumn = "yes"
 vim.wo.signcolumn = 'yes'
 
--- Panes
-vim.o.winwidth = 10
-vim.o.winminwidth = 10
-vim.o.equalalways = false
-
 -- Sync clipboard with OS (better tmux support)
 vim.opt.clipboard = 'unnamedplus'

@@ -5,9 +5,10 @@ return {
 
     {
         'dracula/vim',
-        config = function()
+        init = function()
             vim.cmd.colorscheme('dracula')
-
+        end,
+        config = function()
             vim.api.nvim_create_autocmd('TextYankPost', {
                 callback = function()
                     vim.highlight.on_yank()
@@ -24,6 +25,11 @@ return {
             'anuvyklack/middleclass',
             'anuvyklack/animation.nvim'
         },
+        init = function()
+            vim.o.winwidth = 5
+            vim.o.winminwidth = 5
+            vim.o.equalalways = false
+        end
     },
 
     -- Set lualine as statusline
