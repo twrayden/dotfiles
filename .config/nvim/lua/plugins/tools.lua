@@ -37,7 +37,7 @@ return {
     config = function()
       local keyset = vim.keymap.set
 
-      keyset("n", "<leader>t", ":ToggleTerm size=160 direction=vertical<CR>", { silent = true })
+      keyset("n", "<leader>t", ":ToggleTerm size=60 direction=vertical<CR>", { silent = true })
       keyset("t", "<C-w>", [[<C-\><C-n>]])
 
       require('toggleterm').setup()
