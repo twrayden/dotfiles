@@ -15,7 +15,7 @@ M.config = function()
 		ensure_installed = {
 			'c', 'cpp', 'go', 'lua', 'luadoc', 'python', 'rust', 'tsx', 'typescript', 'javascript', 'vimdoc',
 			'vim', 'json', 'html', 'gitignore', 'gitcommit', 'csv', 'http', 'regex', 'scss', 'toml', 'yaml',
-			'xml'
+			'xml', 'vue'
 		},
 		modules = {},
 		-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
